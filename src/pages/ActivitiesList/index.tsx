@@ -4,7 +4,6 @@ import ActivityFilter from '../../components/ActivityFilter';
 import ActivitySearchFilter from '../../components/ActivitySearchFilter';
 import { activityTags, imgLinkStub } from '../../constants/constants';
 import styles from './index.module.scss';
-import { Divider } from '@douyinfe/semi-ui';
 import { activityTagsType } from '../../types/types';
 import LibFooter from '../../components/LibFooter';
 
@@ -48,16 +47,20 @@ export default function ActivitiesList() {
     setSelectedTags(newSelectedTags);
   };
 
-  return <div className={styles.activityPage} >
-    <div className={styles.filterBar} >
-      <ActivityFilter
+  return (
+    <div className={styles.activityPage} >
+      <div className={styles.filterBar} >
+        <ActivityFilter
+          selectedTags={selectedTags} 
+          handleChangeSelectedTags={handleChangeSelectedTags} 
+        />
+        <ActivitySearchFilter />
+      </div>
+      <Activities 
         selectedTags={selectedTags} 
-        handleChangeSelectedTags={handleChangeSelectedTags} 
+        dataSource={dataSource.concat(dataSource)} 
       />
-      <ActivitySearchFilter />
+      <LibFooter />
     </div>
-    <Divider margin='12px'/>
-    <Activities selectedTags={selectedTags} dataSource={dataSource.concat(dataSource)} />
-    <LibFooter />
-  </div>;
+  );
 }

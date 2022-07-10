@@ -23,9 +23,18 @@
 }
 
 .activityList {
-  padding: 0 18px;
+  padding: 0;
+  flex-grow: 1;
 }
 
 .activityItem {
   margin: 8px 0;
+}
+
+.activityContainer {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 100%;
+  padding: 34px;
 }
